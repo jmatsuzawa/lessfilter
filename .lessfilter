@@ -2,4 +2,7 @@
 
 case "$1" in
 *.mo) msgunfmt "$1" ;;
+# In the case of the other formats,
+# return an error to pass it to lesspipe.sh provided by Red Hat
+*) exit 1 ;;
 esac
