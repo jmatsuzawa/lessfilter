@@ -1,7 +1,11 @@
 #!/bin/sh
 
 case "$1" in
-*.mo) msgunfmt "$1" ;;
+*.mo)
+  if which msgunfmt >/dev/null 2>&1; then
+    msgunfmt "$1"
+  fi
+  ;;
 # In the case of the other formats,
 # return an error to pass it to lesspipe.sh provided by Red Hat
 *) exit 1 ;;
