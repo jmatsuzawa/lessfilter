@@ -6,12 +6,12 @@ case "$1" in
     msgunfmt "$1"
   fi
   ;;
-# In the case of the other formats,
-# return an error to pass it to lesspipe.sh provided by Red Hat
 *)
   if file "$1" | grep ' data$' >/dev/null 2>&1; then
     hexdump -Cv "$1"
   else
+    # In the case of the other formats,
+    # return an error to pass it to lesspipe.sh provided by Red Hat
     exit 1
   fi
   ;;
