@@ -8,5 +8,11 @@ case "$1" in
   ;;
 # In the case of the other formats,
 # return an error to pass it to lesspipe.sh provided by Red Hat
-*) exit 1 ;;
+*)
+  if file "$1" | grep ' data$' >/dev/null 2>&1; then
+    hexdump -Cv "$1"
+  else
+    exit 1
+  fi
+  ;;
 esac
